@@ -454,6 +454,18 @@ function imEd(){var inp=document.createElement('input');inp.type='file';inp.acce
 // 토스트
 function toast(msg){var t=document.getElementById('toast');t.textContent=msg;t.style.opacity='1';clearTimeout(t._to);t._to=setTimeout(function(){t.style.opacity='0'},2200)}
 
+// Inline onclick handlers need these names on window when the app is served from GitHub Pages.
+[
+  'setV','onQ','fTh','tgS','shP','closeP','stT','goC','sQM','sTM','sTF','tgOp',
+  'ckT','rtQ','nxT','rsT2','rsTs','svTs','sMF','opMT','opMS','mBk','edTg',
+  'dlTk','svTk','rsTk','adTk','aScn','rScn','aPt','rPt2','exEd','imEd','rEd'
+].forEach(function(n){try{window[n]=eval(n)}catch(e){}});
+try{
+  Object.defineProperty(window,'edE',{get:function(){return edE},set:function(v){edE=v}});
+  Object.defineProperty(window,'edS',{get:function(){return edS},set:function(v){edS=v}});
+  window.TALKS=TALKS;
+}catch(e){}
+
 // 초기화
 bTabs();bMap();bList();
 setV('map');
