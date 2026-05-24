@@ -334,7 +334,7 @@ document.addEventListener('click',function(e){if(!e.target.closest('#pn')&&!e.ta
 function gQT(){return qm==='전체'?TALKS:TALKS.filter(function(t){return!st.has(t.no)})}
 function rFl(){
   var qt=gQT();var w=document.getElementById('fv');
-  var mh='<div class="fms">'+['전체','미완료'].map(function(m){return'<button class="fm" style="background:'+(qm===m?'#3b82f6':'#1e293b')+';color:'+(qm===m?'white':'#94a3b8')+';border:1px solid '+(qm===m?'#3b82f6':'#334155')+'" onclick="sQM(''+m+'')">'+m+'</button>'}).join('')+'</div>';
+  var mh='<div class="fms">'+['전체','미완료'].map(function(m){return'<button class="fm" style="background:'+(qm===m?'#3b82f6':'#1e293b')+';color:'+(qm===m?'white':'#94a3b8')+';border:1px solid '+(qm===m?'#3b82f6':'#334155')+'" onclick="sQM(\''+m+'\')">'+m+'</button>'}).join('')+'</div>';
   if(!qt.length){w.innerHTML=mh+'<div style="text-align:center;color:#22c55e;padding:40px">🎉 모두 완료!</div>';return}
   var idx=ci%qt.length;var tk=qt[idx];var th=TH[tk.t];var bd='';
   if(!fl){bd='<div class="ftag" style="background:'+th.bg+';color:'+th.c+'">'+th.e+' '+th.n+'</div><div class="fmain">'+tk.title+'</div><div class="fhint">탭하면 소주제 확인 👇</div>'}
@@ -355,7 +355,7 @@ function stT(no){var p=bQ('seq');var i=p.findIndex(function(t){return t.no===no}
 function rTF(){var h='<div class="tf"><button class="ttab" style="color:#94a3b8;border-color:#475569;background:'+(ts.tf===-1?'#8b5cf6;border-color:#8b5cf6;color:white':'#1e293b')+'" onclick="sTF(-1)">전체</button>';TH.forEach(function(th,i){var on=ts.tf===i;h+='<button class="ttab" style="color:'+(on?'white':th.c)+';border-color:'+(on?th.c:th.c+'50')+';background:'+(on?th.c:'#1e293b')+'" onclick="sTF('+i+')">'+th.e+th.n+'</button>'});return h+'</div>'}
 function rTs(){
   var w=document.getElementById('tv');var tf=rTF();
-  var tm='<div class="tmode">'+[['toc','📋 목차'],['seq','🔢 순서'],['rand','🔀 랜덤']].map(function(m){return'<button class="tmb'+(ts.mode===m[0]?' on':'')+'" onclick="sTM(''+m[0]+'')">'+m[1]+'</button>'}).join('')+'</div>';
+  var tm='<div class="tmode">'+[['toc','📋 목차'],['seq','🔢 순서'],['rand','🔀 랜덤']].map(function(m){return'<button class="tmb'+(ts.mode===m[0]?' on':'')+'" onclick="sTM(\''+m[0]+'\')">'+m[1]+'</button>'}).join('')+'</div>';
   var to=Object.keys(ts.hist).length;var co=Object.values(ts.hist).filter(function(v){return v==='o'}).length;
   var tl='<div class="ttool"><span style="font-size:11px;color:#64748b;flex:1">누적 '+to+'문제 · '+(to>0?Math.round(co/to*100):0)+'%</span><button class="ttb b" onclick="svTs()">💾 저장</button><button class="ttb r" onclick="rsTs()">🗑 초기화</button></div>';
   if(ts.mode==='toc'){
@@ -366,7 +366,7 @@ function rTs(){
   if(!ts.q.length){ts.q=bQ(ts.mode);ts.idx=0;ts.log=[]}
   if(ts.idx>=ts.q.length){
     var lg=ts.log;var c2=lg.filter(function(h){return h==='o'}).length;var pct=lg.length>0?Math.round(c2/lg.length*100):0;var col=pct>=70?'#22c55e':pct>=40?'#f59e0b':'#ef4444';
-    w.innerHTML=tf+tm+tl+'<div class="tqsc"><div class="big" style="color:'+col+'">'+pct+'%</div><div class="sub">'+c2+' / '+lg.length+'개 정답</div></div><div class="tsdk">'+lg.map(function(h){return'<div class="tsd" style="background:'+(h==='o'?'#22c55e':h==='g'?'#f59e0b':'#ef4444')+'"></div>'}).join('')+'</div><div class="tqbts"><button class="tqbtn c" onclick="rsT2()">🔄 다시</button><button class="tqbtn s" onclick="sTM('toc')">📋 목차</button></div>';return;
+    w.innerHTML=tf+tm+tl+'<div class="tqsc"><div class="big" style="color:'+col+'">'+pct+'%</div><div class="sub">'+c2+' / '+lg.length+'개 정답</div></div><div class="tsdk">'+lg.map(function(h){return'<div class="tsd" style="background:'+(h==='o'?'#22c55e':h==='g'?'#f59e0b':'#ef4444')+'"></div>'}).join('')+'</div><div class="tqbts"><button class="tqbtn c" onclick="rsT2()">🔄 다시</button><button class="tqbtn s" onclick="sTM(\'toc\')">📋 목차</button></div>';return;
   }
   var tk=ts.q[ts.idx];var th=TH[tk.t];var tno=tk.no;
   if(!ts.op.length){ts.op=mkOp(tk);ts.sel=new Set();ts.ck=false;ts.gu=false}
@@ -377,7 +377,7 @@ function rTs(){
   var att='<div style="display:flex;gap:3px;margin-bottom:7px">';for(var ai=0;ai<MA;ai++){var c3=ts.att;var done=ai<c3;var bg=done?'#ef4444':'#334155';if(done&&ai===c3-1&&ck){var sc2=ts.op.filter(function(o,i2){return o.c&&ts.sel.has(i2)}).length;var sw=ts.op.filter(function(o,i2){return!o.c&&ts.sel.has(i2)}).length;bg=sc2===cc&&sw===0?'#22c55e':'#ef4444'}att+='<div style="width:15px;height:15px;border-radius:3px;background:'+bg+'"></div>'}att+='</div>';
   var res='';
   if(ck){var sc=ts.op.filter(function(o,i2){return o.c&&ts.sel.has(i2)}).length;var sw2=ts.op.filter(function(o,i2){return!o.c&&ts.sel.has(i2)}).length;var perf=sc===cc&&sw2===0;var rem=MA-ts.att;var rc=perf?'#22c55e':'#ef4444';res='<div style="margin-top:9px;padding:9px 11px;border-radius:7px;border:1px solid '+rc+';background:'+(perf?'rgba(34,197,94,.1)':'rgba(239,68,68,.1)')+'"><div style="font-weight:900;color:'+rc+';margin-bottom:3px">'+(perf?'🎉 완벽해요! ('+ts.att+'번째)':'⚠️ 틀렸어요')+'</div><div style="font-size:11px;color:#94a3b8">정답 '+sc+'/'+cc+'개 · 오선택 '+sw2+'개</div>'+((!perf&&rem>0)?'<div style="font-size:10px;color:#f59e0b;margin-top:2px">남은 기회 '+rem+'번</div>':'')+((!perf&&rem<=0)?'<div style="font-size:10px;color:#f59e0b;margin-top:2px">★=정답</div>':'')+'</div>';if(perf)res+='<div class="tqbts"><button class="tqbtn s" onclick="shP('+tno+')">📖 보기</button><button class="tqbtn n" onclick="nxT()">다음 ▶</button></div>';else if(rem>0)res+='<div class="tqbts"><button class="tqbtn s" onclick="shP('+tno+')">📖 보기</button><button class="tqbtn c" onclick="rtQ()">🔄 재도전('+rem+')</button></div>';else res+='<div class="tqbts"><button class="tqbtn s" onclick="shP('+tno+')">📖 정답보기</button><button class="tqbtn n" onclick="nxT()">다음 ▶</button></div>'}
-  var bot=ck?'':'<div class="tqbts"><button class="tqbtn s" onclick="sTM('toc')">목차</button><button class="tqbtn c" onclick="ckT()">'+(ts.att===0?'✓ 정답확인':'재도전 ('+(MA-ts.att)+'번)')+'</button></div>';
+  var bot=ck?'':'<div class="tqbts"><button class="tqbtn s" onclick="sTM(\'toc\')">목차</button><button class="tqbtn c" onclick="ckT()">'+(ts.att===0?'✓ 정답확인':'재도전 ('+(MA-ts.att)+'번)')+'</button></div>';
   var pr=ts.hist[tno];var pb=pr?'<span style="font-size:10px;padding:1px 5px;border-radius:99px;background:'+(pr==='o'?'rgba(34,197,94,.15)':'rgba(239,68,68,.15)')+';color:'+(pr==='o'?'#22c55e':'#ef4444')+';margin-left:4px">'+(pr==='o'?'✅':'❌')+'</span>':'';
   w.innerHTML=tf+tm+tl+pbar+'<div class="tqc">'+att+'<div style="font-size:10px;font-weight:700;color:#64748b;margin-bottom:3px">📌 소주제는?</div><div style="font-size:14px;font-weight:900;line-height:1.4;margin-bottom:3px">'+tk.title+pb+'</div><div style="display:inline-block;font-size:10px;padding:2px 7px;border-radius:99px;background:'+th.bg+';color:'+th.c+';margin-bottom:7px">'+th.e+' '+th.n+'</div><div style="font-size:11px;color:#64748b;margin-bottom:8px">해당 소주제 <strong style="color:#f1f5f9">'+cc+'개</strong> 선택</div><div>'+opts+'</div>'+res+'</div>'+bot;
 }
@@ -388,10 +388,7 @@ function nxT(){ts.idx++;ts.op=[];ts.sel=new Set();ts.ck=false;ts.att=0;ts.gu=fal
 function rsT2(){ts.q=bQ(ts.mode);ts.idx=0;ts.op=[];ts.sel=new Set();ts.ck=false;ts.att=0;ts.gu=false;ts.log=[];rTs()}
 function sTM(m){ts.mode=m;ts.q=[];ts.idx=0;ts.op=[];ts.sel=new Set();ts.ck=false;ts.att=0;ts.gu=false;ts.log=[];rTs()}
 function sTF(ti){ts.tf=ti;ts.q=[];ts.idx=0;ts.op=[];ts.sel=new Set();ts.ck=false;ts.att=0;ts.gu=false;ts.log=[];rTs()}
-function svTs(){var to=Object.keys(ts.hist).length;var co=Object.values(ts.hist).filter(function(v){return v==='o'}).length;var pct=to>0?Math.round(co/to*100):0;var d=new Date().toLocaleString('ko-KR');var csv='번호,제목,결과
-';TALKS.forEach(function(tk){var r=ts.hist[tk.no];if(r)csv+=tk.no+',"'+tk.title.replace(/,/g,' ')+'","'+(r==='o'?'정답':'오답')+'"
-'});csv+='
-요약,총 '+to+'문제,'+pct+'% / '+d;var blob=new Blob([csv],{type:'text/csv;charset=utf-8;'});var url=URL.createObjectURL(blob);var a=document.createElement('a');a.href=url;a.download='골자테스트.csv';a.click();URL.revokeObjectURL(url);toast('저장완료!')}
+function svTs(){var to=Object.keys(ts.hist).length;var co=Object.values(ts.hist).filter(function(v){return v==='o'}).length;var pct=to>0?Math.round(co/to*100):0;var d=new Date().toLocaleString('ko-KR');var csv='번호,제목,결과\n';TALKS.forEach(function(tk){var r=ts.hist[tk.no];if(r)csv+=tk.no+',"'+tk.title.replace(/,/g,' ')+'","'+(r==='o'?'정답':'오답')+'"\n'});csv+='\n요약,총 '+to+'문제,'+pct+'% / '+d;var blob=new Blob([csv],{type:'text/csv;charset=utf-8;'});var url=URL.createObjectURL(blob);var a=document.createElement('a');a.href=url;a.download='골자테스트.csv';a.click();URL.revokeObjectURL(url);toast('저장완료!')}
 function rsTs(){if(!confirm('초기화할까요?'))return;ts.hist={};ts.log=[];try{localStorage.removeItem('TH2')}catch(e){}rTs()}
 
 // 마인드맵
