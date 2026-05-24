@@ -245,6 +245,45 @@ body{font-size:15px}
   .fmain{font-size:28px}
   #pn{max-width:980px}
 }
+
+/* Light comfort theme: soft surfaces and dark text for longer reading. */
+body{background:#f6f7fb;color:#172033}
+#hd,#ttabs,.mmtop,.mmfr{background:#ffffff;border-color:#d9e1ec;box-shadow:0 1px 8px rgba(31,41,55,.06)}
+.hd1 h1{color:#172033}
+.hd1 h1 b{color:#2563eb}
+#q,.edsr,.edin,.edsi,.edpi{background:#f8fafc;color:#172033;border-color:#cbd5e1}
+#q::placeholder,.edsr::placeholder{color:#8a98aa}
+#bdg,.fhint,.tqsc .sub,.mmbc,.edno,.edlb,.edcnt,#emp{color:#667085}
+.vb,.fn,.frd,.tmb,.ttb,.tqbtn.s,.mmbk,.edib.x,.edsb.ca{background:#ffffff;color:#344054;border-color:#cbd5e1}
+.vb.on,.tmb.on{background:#2563eb;border-color:#2563eb;color:#ffffff}
+.ttab{background:#ffffff;color:#344054;border-color:#cbd5e1}
+.th,.tc2,.li,.fc,.ti,.tqc,.tqopt,.tqsc,.mmlc,.mnpt,.edi,.edsc,#pn{background:#ffffff;border-color:#d7dee8;color:#172033}
+.tg{background:#ffffff;border-color:#d7dee8}
+.ts.col .tg{background:#ffffff}
+.tc2,.li,.ti,.mmlc{box-shadow:0 1px 3px rgba(31,41,55,.06)}
+.tc2:hover,.li:hover,.ti:hover,.mmlc:hover{border-color:#94a3b8;box-shadow:0 4px 14px rgba(31,41,55,.08)}
+.ct,.lt,.tit,.mmlt,.tqtx,.pti,.pptx,.edtx,.fmain,.fbt,.mmbc b{color:#172033}
+.cn,.ln,.tin,.mmln,.pno{color:#64748b}
+.lg,.ftag,.ptg{background:#eef2f7;color:#334155}
+.tqopt.sel{border-color:#2563eb;background:#eff6ff}
+.tqopt.cor{background:#ecfdf3!important}
+.tqopt.wr{background:#fef2f2!important}
+.tqopt.mis{background:#fff7ed!important}
+.tqcb{border-color:#9aa7b8;color:#344054}
+#mmv{background:#f6f7fb}
+.pnt{color:#344054;background:#f8fafc;border-left-color:#cbd5e1}
+.vrf{color:#1d4ed8;border-bottom-color:rgba(29,78,216,.35)}
+.prf{color:#6d28d9;border-bottom-color:rgba(109,40,217,.35)}
+#pc{background:#e5eaf1;color:#344054}
+.edbdy{border-top-color:#d9e1ec}
+.edmd{background:#fff7ed;color:#b45309}
+.adas,.adap{border-color:#cbd5e1;color:#667085}
+#toast{background:#047857;color:#ffffff}
+
+/* Override dynamic inline dark surfaces while preserving theme accent borders/text. */
+.ttab[style],.fm[style],.tmb[style],.ttb[style],.tqbtn[style],.mmbk[style]{background:#ffffff!important;color:#344054!important;border-color:#cbd5e1!important}
+.tc2[style],.li[style],.ti[style],.mmlc[style]{background:#ffffff!important}
+.fb[style],.ppn[style]{color:#ffffff!important}
 </style>
 </head>
 <body>
@@ -287,16 +326,16 @@ body{font-size:15px}
 // 데이터 로드
 var TALKS = JSON.parse(document.getElementById('DATA').textContent);
 var TH=[
-  {n:"하느님·그리스도",c:"#60a5fa",bg:"rgba(96,165,250,.12)",bd:"rgba(96,165,250,.3)",e:"🙏"},
-  {n:"마지막 날·예언", c:"#f87171",bg:"rgba(248,113,113,.12)",bd:"rgba(248,113,113,.3)",e:"⚠️"},
-  {n:"가정·자녀",      c:"#4ade80",bg:"rgba(74,222,128,.12)", bd:"rgba(74,222,128,.3)", e:"👨‍👩‍👧"},
-  {n:"도덕·행실",      c:"#fbbf24",bg:"rgba(251,191,36,.12)", bd:"rgba(251,191,36,.3)", e:"⚖️"},
-  {n:"성경·진리·종교", c:"#c084fc",bg:"rgba(192,132,252,.12)",bd:"rgba(192,132,252,.3)",e:"📖"},
-  {n:"기도·영성",      c:"#22d3ee",bg:"rgba(34,211,238,.12)", bd:"rgba(34,211,238,.3)", e:"✨"},
-  {n:"구원·부활",      c:"#fb923c",bg:"rgba(251,146,60,.12)", bd:"rgba(251,146,60,.3)", e:"🌅"},
-  {n:"전도·봉사",      c:"#38bdf8",bg:"rgba(56,189,248,.12)", bd:"rgba(56,189,248,.3)", e:"📢"},
-  {n:"신뢰·믿음·인내", c:"#34d399",bg:"rgba(52,211,153,.12)", bd:"rgba(52,211,153,.3)", e:"💪"},
-  {n:"사회·윤리",      c:"#a78bfa",bg:"rgba(167,139,250,.12)",bd:"rgba(167,139,250,.3)",e:"🌍"}
+  {n:"하느님·그리스도",c:"#2563eb",bg:"rgba(37,99,235,.08)",bd:"rgba(37,99,235,.22)",e:"🙏"},
+  {n:"마지막 날·예언", c:"#dc2626",bg:"rgba(220,38,38,.08)",bd:"rgba(220,38,38,.22)",e:"⚠️"},
+  {n:"가정·자녀",      c:"#15803d",bg:"rgba(21,128,61,.08)", bd:"rgba(21,128,61,.22)", e:"👨‍👩‍👧"},
+  {n:"도덕·행실",      c:"#b45309",bg:"rgba(180,83,9,.09)", bd:"rgba(180,83,9,.24)", e:"⚖️"},
+  {n:"성경·진리·종교", c:"#7c3aed",bg:"rgba(124,58,237,.08)",bd:"rgba(124,58,237,.22)",e:"📖"},
+  {n:"기도·영성",      c:"#0891b2",bg:"rgba(8,145,178,.08)", bd:"rgba(8,145,178,.22)", e:"✨"},
+  {n:"구원·부활",      c:"#ea580c",bg:"rgba(234,88,12,.08)", bd:"rgba(234,88,12,.22)", e:"🌅"},
+  {n:"전도·봉사",      c:"#0284c7",bg:"rgba(2,132,199,.08)", bd:"rgba(2,132,199,.22)", e:"📢"},
+  {n:"신뢰·믿음·인내", c:"#047857",bg:"rgba(4,120,87,.08)", bd:"rgba(4,120,87,.22)", e:"💪"},
+  {n:"사회·윤리",      c:"#6d28d9",bg:"rgba(109,40,217,.08)",bd:"rgba(109,40,217,.22)",e:"🌍"}
 ];
 
 // 편집 데이터 적용
